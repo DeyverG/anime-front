@@ -1,0 +1,55 @@
+// ==========================================================================
+// Mixins para la generación de los espaciados ( margins y paddings )
+// ==========================================================================
+
+@mixin list-spacing($type, $direction, $className) {
+    @each $name, $size in $sizes {
+        @if $direction ==all {
+            #{$className}-#{$name} {
+                #{$type}: $size !important;
+            }
+        }
+
+        @else if $direction ==top {
+            #{$className}-#{$name} {
+                #{$type}-top: $size !important;
+            }
+        }
+
+        @else if $direction ==bottom {
+            #{$className}-#{$name} {
+                #{$type}-bottom: $size !important;
+            }
+        }
+
+        @else if $direction ==right {
+            #{$className}-#{$name} {
+                #{$type}-right: $size !important;
+            }
+        }
+
+        @else if $direction ==left {
+            #{$className}-#{$name} {
+                #{$type}-left: $size !important;
+            }
+        }
+    }
+}
+
+// ==========================================================================
+// Anchos minimos (min-width) : @include mq-min(sm) {}
+// ==========================================================================
+
+@mixin mq-min($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        @media (min-width: $breakpoint-value) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+}

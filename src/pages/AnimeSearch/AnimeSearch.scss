@@ -1,0 +1,35 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.container-search{
+    width: 100%;
+    margin: auto;
+
+    @include mq-min(sm) {
+        width: 70%;
+    }
+
+    @include mq-min(md) {
+        width: 60%;
+    }
+
+    @include mq-min(lg) {
+        width: 40%;
+    }
+}
+
+.btn-search{
+    width: 100%;
+
+    @include mq-min(sm) {
+        width: 40%;
+    }
+
+    @include mq-min(md) {
+        width: 50%;
+    }
+
+    @include mq-min(lg) {
+        width: 40%;
+    }
+}
