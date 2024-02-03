@@ -1,0 +1,63 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.container-swiper {
+    width: 100%;
+    margin: auto;
+
+    @include mq-min(sm) {
+        width: 100%;
+    }
+
+    @include mq-min(md) {
+        width: 100%;
+    }
+
+    @include mq-min(lg) {
+        width: 70%;
+    }
+}
+
+.card-swiper {
+    background: #1A1B1F;
+    border-radius: 1rem;
+}
+
+.title-card{
+    margin: 0;
+    color: white;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.score-card {
+    margin: 0;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+img{
+    width: 50%;
+    height: auto;
+    max-width: 100%;
+
+    @include mq-min(sm) {
+        width: 80%;
+    }
+
+    @include mq-min(md) {
+        width: 80%;
+    }
+
+    @include mq-min(lg) {
+        width: 100%;
+    }
+}
+
+.skeleton-card {
+    padding-top: 100%;
+}

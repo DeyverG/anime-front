@@ -1,0 +1,56 @@
+// Displays
+$dflexs: flex, inline-flex, block, inline-block, grid, none, contents;
+
+@each $dflex in $dflexs {
+    .d-#{$dflex} {
+        display: $dflex;
+    }
+}
+
+@include mq-min(sm) {
+    $d-sm: flex, block, grid, none;
+
+    @each $d-sm in $d-sm {
+        .d-sm-#{$d-sm} {
+            display: $d-sm;
+        }
+    }
+}
+
+@include mq-min(md) {
+    $d-ms: flex, block, grid, none;
+
+    @each $d-ms in $d-ms {
+        .d-md-#{$d-ms} {
+            display: $d-ms;
+        }
+    }
+}
+
+@include mq-min(lg) {
+    $d-ls: flex, block, grid, none;
+
+    @each $d-ls in $d-ls {
+        .d-lg-#{$d-ls} {
+            display: $d-ls;
+        }
+    }
+}
+
+// text-align : applies to all elements
+$aligns: center, left, right, justify, end;
+
+@each $align in $aligns {
+    .ta-#{$align} {
+        text-align: $align;
+    }
+}
+
+// Axis Alignment : applies to flex containers
+$justifys: flex-start, flex-end, center, space-between, space-around, space-evenly;
+
+@each $justify in $justifys {
+    .jc-#{$justify} {
+        justify-content: $justify;
+    }
+}
