@@ -10,7 +10,7 @@ export const AnimeSearch = () => {
 
     // State's
     const [nameSearch, setnameSearch] = useState('')
-    const [animeData, setdataAnime] = useState<AnimeDataProps>({ data: [], current_page: 0, has_next_page: false })
+    const [animeData, setdataAnime] = useState<AnimeDataProps>({ data: [], pagination: { current_page: 0, has_next_page: false } })
 
     // Function that call the API and get the data
     const handleSearch = async (page: number = 1) => {
@@ -24,8 +24,10 @@ export const AnimeSearch = () => {
             // add the new data to the state
             setdataAnime({
                 data: [...animeOld, ...responseApi.data],
-                current_page: responseApi.current_page,
-                has_next_page: responseApi.has_next_page
+                pagination: {
+                    current_page: responseApi.pagination.current_page,
+                    has_next_page: responseApi.pagination.has_next_page
+                }
             })
         }
     }

@@ -1,5 +1,5 @@
 import './SwiperComponent.scss';
-import { Navigation } from 'swiper/modules';
+import { Controller, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { AnimeDataProps } from '../../interfaces/AnimeSearch/AnimeSearch';
 import { useWindowDimensions } from '../../hooks/useDimensions';
@@ -18,10 +18,11 @@ export const SwiperComponent = ({ animeData, chargeMoreData }: SwiperComponentPr
 
   // State's
   const [slides, setSlides] = useState<number>(0)
+  const [swiperRef, setSwiperRef] = useState<any>(null);
 
   // Get more data when the user reach the end of the swiper if has next page is true
   const chargeMoreDataSwiper = (page: number) => {
-    if (!animeData.has_next_page) return
+    if (!animeData.pagination.has_next_page) return
     chargeMoreData(page)
   }
 
@@ -40,14 +41,21 @@ export const SwiperComponent = ({ animeData, chargeMoreData }: SwiperComponentPr
     if (width >= 1280) setSlides(5)
   }, [width])
 
+  useEffect(() => {
+    if(animeData.pagination.current_page === 1) swiperRef?.slideTo(0,0)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [animeData])
+
   return (
     <div className='container-swiper mt-medium'>
       <Swiper
         spaceBetween={10}
         slidesPerView={slides}
-        navigation
-        modules={[Navigation]}
-        onReachEnd={() => chargeMoreDataSwiper(animeData.current_page + 1)}
+        navigation={true}
+        modules={[Navigation, Controller]}
+        onSwiper={setSwiperRef}
+        controller={{ control: swiperRef }}
+        onReachEnd={() => chargeMoreDataSwiper(animeData.pagination.current_page + 1)}
       >
         {animeData.data.map((anime, idx) => {
           return (
@@ -73,7 +81,7 @@ export const SwiperComponent = ({ animeData, chargeMoreData }: SwiperComponentPr
           )
         })}
         {/* Swiper loading */}
-        {animeData.has_next_page &&
+        {animeData.pagination.has_next_page &&
           <SwiperSlide>
             <Skeleton></Skeleton>
             <Skeleton className='skeleton-card'></Skeleton>

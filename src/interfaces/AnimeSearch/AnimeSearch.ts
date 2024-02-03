@@ -15,6 +15,9 @@ export interface AnimeDataProps {
             }
         }
     }[];
-    current_page: number;
-    has_next_page: boolean;
+    pagination: {
+        current_page: number;
+        has_next_page: boolean;
+    }
+
 }
