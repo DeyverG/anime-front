@@ -13,7 +13,7 @@ function createWindow() {
         height: 600,
         useContentSize: true
     })
-    
+
     mainWindow.loadFile('./dist/index.html')
     // mainWindow.webContents.openDevTools()
 
@@ -29,28 +29,15 @@ function createWindow() {
 
     // Verificaciones de actualizaciones
     // Eventos de autoUpdater para verificar el estado
-    autoUpdater.on('checking-for-update', () => {
-        dialog.showMessageBox({ message: 'Checking for updates...' });
-    });
-
     autoUpdater.on('update-available', (info) => {
-        dialog.showMessageBox({ message: 'Update available: ' + JSON.stringify(info) });
-    });
-
-    autoUpdater.on('update-not-available', (info) => {
-        dialog.showMessageBox({ message: 'Update not available: ' + JSON.stringify(info) });
+        dialog.showMessageBox({ message: 'Actualización disponible, descargando versión:' + info.version });
     });
 
     autoUpdater.on('error', (err) => {
         dialog.showErrorBox('Error in auto-updater', err == null ? "unknown" : (err.stack || err).toString());
     });
 
-    autoUpdater.on('download-progress', (progressObj) => {
-        dialog.showMessageBox({ message: 'Download progress: ' + JSON.stringify(progressObj) });
-    });
-
     autoUpdater.on('update-downloaded', () => {
-        dialog.showMessageBox({ message: 'Update downloaded' });
         autoUpdater.quitAndInstall();
     });
 }

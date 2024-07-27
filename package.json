@@ -9,7 +9,7 @@
     "url": "https://github.com/DeyverG/anime-front.git"
   },
   "private": true,
-  "version": "1.2.6",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/main.js",
   "build": {
