@@ -29,7 +29,8 @@
     "test": "vitest",
     "build:electron": "vite build -c vite.config.electron.ts",
     "dev:electron": "electron dist/main.js",
-    "generate": "electron-builder"
+    "generate": "electron-builder",
+    "publish": "electron-builder --win --publish always"
   },
   "publish": [
     {
