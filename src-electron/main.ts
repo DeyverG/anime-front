@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // src-electron/main.ts
 import { app, BrowserWindow } from 'electron'
-const autoUpdater = require('electron-updater')
+const { autoUpdater } = require('electron-updater')
 
 let mainWindow: BrowserWindow | undefined
 
@@ -39,4 +39,9 @@ app.on('activate', () => {
     if (mainWindow == null) {
         createWindow()
     }
+})
+
+// Cerrar la aplicacion en segundo plano
+app.on('before-quit', () => {
+    mainWindow?.destroy()
 })
