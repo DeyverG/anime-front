@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField'
 import { GetAnime } from '../../services/AnimeSearch/GetAnime'
 import { SwiperComponent } from '../../components/Swiper/SwiperComponent'
 import { AnimeDataProps } from '../../interfaces/AnimeSearch/AnimeSearch'
+import { version } from '../../../package.json'
 
 export const AnimeSearch = () => {
 
@@ -34,7 +35,7 @@ export const AnimeSearch = () => {
 
     return (
         <div className='ta-center'>
-            <h1 className='mt-half'>* Anime Search 1.2.2*</h1>
+            <h1 className='mt-half'>* Anime Search {version}*</h1>
             <form>
                 <div className='d-block d-sm-flex container-search'>
                     <TextField
