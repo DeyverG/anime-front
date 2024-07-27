@@ -34,7 +34,7 @@ export const AnimeSearch = () => {
 
     return (
         <div className='ta-center'>
-            <h1 className='mt-half'>* Anime Search *</h1>
+            <h1 className='mt-half'>* Anime Search 1.2.2*</h1>
             <form>
                 <div className='d-block d-sm-flex container-search'>
                     <TextField
