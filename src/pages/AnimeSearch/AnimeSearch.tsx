@@ -9,8 +9,8 @@ import { AnimeDataProps } from '../../interfaces/AnimeSearch/AnimeSearch'
 export const AnimeSearch = () => {
 
     // State's
-    const [nameSearch, setnameSearch] = useState('')
-    const [animeData, setdataAnime] = useState<AnimeDataProps>({ data: [], pagination: { current_page: 0, has_next_page: false } })
+    const [nameSearch, setNameSearch] = useState('')
+    const [animeData, setDataAnime] = useState<AnimeDataProps>({ data: [], pagination: { current_page: 0, has_next_page: false } })
 
     // Function that call the API and get the data
     const handleSearch = async (page: number = 1) => {
@@ -22,7 +22,7 @@ export const AnimeSearch = () => {
             const animeOld = page !== 1 ? [...animeData.data] : []
 
             // add the new data to the state
-            setdataAnime({
+            setDataAnime({
                 data: [...animeOld, ...responseApi.data],
                 pagination: {
                     current_page: responseApi.pagination.current_page,
@@ -33,9 +33,9 @@ export const AnimeSearch = () => {
     }
 
     return (
-        <>
-            <div className='ta-center'>
-                <h1 className='mt-half'>* Anime Search *</h1>
+        <div className='ta-center'>
+            <h1 className='mt-half'>* Anime Search *</h1>
+            <form>
                 <div className='d-block d-sm-flex container-search'>
                     <TextField
                         fullWidth
@@ -45,7 +45,7 @@ export const AnimeSearch = () => {
                         variant="outlined"
                         value={nameSearch}
                         size='small'
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setnameSearch(event.target.value)}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setNameSearch(event.target.value)}
                     />
                     <Button
                         className='pr-xmedium pl-xmedium btn-search mb-base'
@@ -55,10 +55,10 @@ export const AnimeSearch = () => {
                         Search
                     </Button>
                 </div>
-                <div>
-                    <SwiperComponent animeData={animeData} chargeMoreData={handleSearch} />
-                </div>
+            </form>
+            <div>
+                <SwiperComponent animeData={animeData} chargeMoreData={handleSearch} />
             </div>
-        </>
+        </div>
     )
 }
