@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // src-electron/main.ts
 import { app, BrowserWindow } from 'electron'
-const { autoUpdater } = require('electron-updater')
+import pkg from 'electron-updater'
+
+const { autoUpdater } = pkg
 
 let mainWindow: BrowserWindow | undefined
 
