@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // src-electron/main.ts
 import { app, BrowserWindow } from 'electron'
-import { autoUpdater } from 'electron-updater'
+const autoUpdater = require('electron-updater')
 
 let mainWindow: BrowserWindow | undefined
 
@@ -12,7 +13,7 @@ function createWindow() {
     })
 
     mainWindow.loadURL('http://localhost:5173')
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     mainWindow.on('closed', () => {
         mainWindow = undefined
